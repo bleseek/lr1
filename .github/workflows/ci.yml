@@ -17,12 +17,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential
 
-      - name: Build
+      - name: Build example
         run: |
-          g++ -g main.c math_func.c -o main.exe
+          gcc -std=c11 -O2 example/main.c example/math.c -o example.exe
         shell: bash
 
-      - name: Run tests
+      - name: Run example tests
         run: |
-          ./main.exe
+          ./example.exe
         shell: bash
