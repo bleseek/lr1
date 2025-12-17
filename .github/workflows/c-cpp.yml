@@ -12,12 +12,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install build tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential
+      shell: bash
+
+    - name: Build
+      run: |
+        g++ -g main.c math_func.c -o main.exe
+      shell: bash
+
+    - name: Run tests
+      run: |
+        ./main.exe
+      shell: bash
