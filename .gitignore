@@ -1,0 +1,12 @@
+# Build artifacts
+*.exe
+*.o
+output/
+
+# VS Code
+.vscode/
+
+# Backup and temp files
+*~
+# macOS
+.DS_Store
